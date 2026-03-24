@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bhaskara 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+    
+body {
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    animation: fundoAnimado 8s infinite alternate;
+}
+
+/* 🌈 Fundo mudando */
+@keyframes fundoAnimado {
+    0% { background: #ffd6e0; }
+    50% { background: #e0bbff; }
+    100% { background: #caffbf; }
+}
+
+/* 💕 Corações */
+.heart {
+    position: absolute;
+    top: -10px;
+    color: pink;
+    font-size: 20px;
+    animation: cair 5s linear infinite;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Container */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 320px;
+    position: relative;
+}
+
+/* 🐱 Gatinho */
+.cat {
+    width: 90px;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 45px);
+    animation: flutuar 2s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-12px);}
+    100% {transform: translateY(0);}
+}
+
+/* Inputs */
+input[type="number"] {
+    border: 2px solid #ffc0dd;
+    border-radius: 10px;
+    padding: 8px;
+    width: 80%;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+input[type="number"]:focus {
+    border-color: #ff57ab;
+}
+
+/* Botão */
+button {
+    background: #ff69af;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff3f9f;
+    transform: scale(1.1);
+}
+
+/* Resultado */
+.resultado {
+    margin-top: 15px;
+    color: #ff57ab;
+    font-weight: bold;
+    min-height: 40px;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <!-- 🐱 Gatinho -->
+    <img class="cat" src="https://cdn-icons-png.flaticon.com/512/1864/1864514.png">
+
+    <h1>Bhaskara 💕</h1>
+
+    <input type="number" id="inputA" placeholder="Digite A"><br>
+    <input type="number" id="inputB" placeholder="Digite B"><br>
+    <input type="number" id="inputC" placeholder="Digite C"><br>
+
+    <button onclick="Calcular()">Calcular 💕 </button>
+
+    <div class="resultado">
+        <p id="resposta1"></p>
+        <p id="resposta2"></p>
+    </div>
+</div>
+
+<script>
+/* 💕 Criar corações caindo */
+function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.classList.add("heart");
+    coracao.innerHTML = "💗 ";
+
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(() => {
+        coracao.remove();
+    }, 5000);
+}
+
+setInterval(criarCoracao, 300);
+
+/* ✨ Efeito de digitação */
+function digitarTexto(elemento, texto, delay = 40) {
+    elemento.innerHTML = "";
+    let i = 0;
+
+    function escrever() {
+        if (i < texto.length) {
+            elemento.innerHTML += texto.charAt(i);
+            i++;
+            setTimeout(escrever, delay);
+        }
+    }
+    escrever();
+}
+
+/* 🧮 Cálculo */
+function Calcular(){
+    let a = parseFloat(document.getElementById("inputA").value)
+    let b = parseFloat(document.getElementById("inputB").value)
+    let c = parseFloat(document.getElementById("inputC").value)
+
+    if (a === 0) {
+        alert("A não pode ser zero! 😠");
+        return;
+    }
+
+    let delta = (b * b) - (4 * a * c);
+
+    let r1 = document.getElementById("resposta1");
+    let r2 = document.getElementById("resposta2");
+
+    if (delta < 0) {
+        digitarTexto(r1, "Sem solução 😢");
+        r2.innerHTML = "";
+        return;
+    }
+
+    let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+    let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+    digitarTexto(r1, "X1 = " + x1.toFixed(2) + " 💗");
+    digitarTexto(r2, "X2 = " + x2.toFixed(2) + " 💗");
+}
+</script>
+
+</body>
+</html>
