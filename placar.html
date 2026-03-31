@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Placar</title>
+
+  <style>
+    body {
+      font-family: "Comic Sans MS", cursive;
+      background: linear-gradient(135deg, #fcd1f5, #ffb4e9);
+      text-align: center;
+      color: #444;
+    }
+
+    h1 {
+      margin-top: 10px;
+      color: #fff9fb;
+    }
+
+    .placar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .time {
+      background: #ffffffcc;
+      padding: 20px;
+      border-radius: 25px;
+      width: 250px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .pontos {
+      font-size: 70px;
+      margin: 10px 0;
+      color: #ff6fa5;
+    }
+
+    .sets {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #ff5bce;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .add {
+      background: #ffa5e3;
+    }
+
+    .sub {
+      background: hsl(330, 100%, 80%);
+    }
+
+    .reset {
+      background: #ffa9de;
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    .controls button {
+      background: hsl(323, 95%, 76%);
+      color: white;
+    }
+
+    .historico {
+      margin: 30px auto;
+      width: 80%;
+      max-width: 500px;
+      background: #ffffffcc;
+      padding: 15px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .historico h2 {
+      text-align: center;
+      color: #ff6fa5;
+    }
+
+    .log {
+      font-size: 13px;
+      border-bottom: 1px dashed #ddd;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>🌷 Placar Fofo 🌷</h1>
+
+  <div class="placar">
+    <div class="time">
+      <h2>🐰 Time A</h2>
+      <div class="pontos" id="pontosA">0</div>
+      <div class="sets">💗 Sets: <span id="setsA">0</span></div>
+
+      <button class="add" onclick="alterarPonto('A', 1)">+1 💕</button>
+      <button class="sub" onclick="alterarPonto('A', -1)">-1 💔</button>
+      <button class="reset" onclick="zerarPontos('A')">Zerar 🌷</button>
+    </div>
+
+    <div class="time">
+      <h2>🐻 Time B</h2>
+      <div class="pontos" id="pontosB">0</div>
+      <div class="sets">💗 Sets: <span id="setsB">0</span></div>
+
+      <button class="add" onclick="alterarPonto('B', 1)">+1 💕</button>
+      <button class="sub" onclick="alterarPonto('B', -1)">-1 💔</button>
+      <button class="reset" onclick="zerarPontos('B')">Zerar 🌷</button>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="ganharSet('A')">🏆 Set A</button>
+    <button onclick="ganharSet('B')">🏆 Set B</button>
+    <button onclick="resetarTudo()">💗 Reset Geral</button>
+  </div>
+
+  <div class="historico">
+    <h2>🌷 Histórico</h2>
+    <div id="log"></div>
+  </div>
+
+  <script>
+    let pontos = { A: 0, B: 0 };
+    let sets = { A: 0, B: 0 };
+
+    function atualizarTela() {
+      document.getElementById("pontosA").innerText = pontos.A;
+      document.getElementById("pontosB").innerText = pontos.B;
+      document.getElementById("setsA").innerText = sets.A;
+      document.getElementById("setsB").innerText = sets.B;
+    }
+
+    function registrarLog(mensagem) {
+      const log = document.getElementById("log");
+      const data = new Date().toLocaleString();
+
+      const item = document.createElement("div");
+      item.className = "log";
+      item.innerText = `✨ [${data}] ${mensagem}`;
+
+      log.prepend(item);
+    }
+
+    function alterarPonto(time, valor) {
+      if (pontos[time] + valor < 0) return;
+
+      pontos[time] += valor;
+      atualizarTela();
+
+      registrarLog(`💫 Time ${time} ${valor > 0 ? "ganhou" : "perdeu"} pontinho (${pontos.A} x ${pontos.B})`);
+    }
+
+    function zerarPontos(time) {
+      pontos[time] = 0;
+      atualizarTela();
+
+      registrarLog(`🌷 Zeraram os pontos do Time ${time}`);
+    }
+
+    function ganharSet(time) {
+      sets[time]++;
+      pontos.A = 0;
+      pontos.B = 0;
+
+      atualizarTela();
+      registrarLog(`🏆 Time ${time} ganhou um set! (${sets.A} x ${sets.B})`);
+    }
+
+    function resetarTudo() {
+      pontos = { A: 0, B: 0 };
+      sets = { A: 0, B: 0 };
+
+      atualizarTela();
+      registrarLog("💕 Tudo foi resetado!");
+    }
+
+    atualizarTela();
+  </script>
+
+</body>
+</html>
