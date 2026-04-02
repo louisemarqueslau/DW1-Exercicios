@@ -1,0 +1,80 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Caixa */
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 20px;
+}
+
+/* Grupo */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #374151;
+    font-size: 14px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5f5;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+}
+
+/* Botão */
+input[type="button"] {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+input[type="button"]:hover {
+    background: #2563eb;
+}
+
+/* Resultado */
+#resp {
+    display: block;
+    margin-top: 15px;
+    padding: 12px;
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    border-radius: 8px;
+    color: #1e3a8a;
+    font-size: 14px;
+}

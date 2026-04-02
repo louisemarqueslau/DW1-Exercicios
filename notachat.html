@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <link rel="stylesheet" href="notas.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Notas</h1>
+
+        <div class="form-group">
+            <label>Nome do Aluno:</label>
+            <input type="text" id="inputNome">
+        </div>
+
+        <div class="form-group">
+            <label>RA:</label>
+            <input type="number" id="inputRA">
+        </div>
+
+        <div class="form-group">
+            <label>Nota 1:</label>
+            <input type="number" id="inputN1">
+        </div>
+
+        <div class="form-group">
+            <label>Nota 2:</label>
+            <input type="number" id="inputN2">
+        </div>
+
+        <div class="form-group">
+            <label>Nota 3:</label>
+            <input type="number" id="inputN3">
+        </div>
+
+        <div class="form-group">
+            <label>Nota 4:</label>
+            <input type="number" id="inputN4">
+        </div>
+
+        <div class="form-group">
+            <label>Média Exercícios:</label>
+            <input type="number" id="inputME">
+        </div>
+
+        <input type="button" value="Calcular" onclick="Calculo()">
+
+        <span id="resp"></span>
+    </div>
+
+    <script>
+        function Calculo(){
+            let Nota1 = parseFloat(document.getElementById("inputN1").value);
+            let Nota2 = parseFloat(document.getElementById("inputN2").value);
+            let Nota3 = parseFloat(document.getElementById("inputN3").value);
+            let Nota4 = parseFloat(document.getElementById("inputN4").value);
+            let ME = parseFloat(document.getElementById("inputME").value);
+            let Nome = document.getElementById("inputNome").value;
+            let ra = parseFloat(document.getElementById("inputRA").value);
+            
+            let MA = (Nota1 + Nota2 * 2 + Nota3 * 3 + Nota4 * 4 + ME )/11;
+
+            if(MA >= 9){
+                conceito = "A - APROVADO";
+            }else if(MA >=7.5){
+                conceito = "B - APROVADO";
+            }else if(MA >=6){
+                conceito = "C - APROVADO";
+            }else if (MA >=4){
+                conceito = "D - REPROVADO";
+            }else {
+                conceito = "E - REPROVADO";
+            }
+
+            document.getElementById("resp").innerHTML =
+            Nome + " - " + ra + " - Média: " + MA.toFixed(2) + " - " + conceito;
+        }
+    </script>
+
+</body>
+</html>
