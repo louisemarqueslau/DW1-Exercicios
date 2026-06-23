@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calcular Hipotenusa</title>
+</head>
+
+<body>
+    <h1>Calcular Hipotenusa</h1>
+    <label for="enderecoServidorInput">Endereço do Servidor:</label>
+    <input type="text" id="enderecoServidorInput" placeholder="Digite o endereço do servidor" value="localhost"><br><br>
+    
+    <label for="inputPorta">Porta:</label>
+    <input type="text" id="inputPorta" placeholder="Digite a porta" value="3000"><br><br>
+    <label for="inputCateto1">Cateto 1:</label>
+    <input type="text" id="inputCateto1" placeholder="Digite o valor do cateto 1">
+    <br><br>
+    <label for="inputCateto2">Cateto 2:</label>
+    <input type="text" id="inputCateto2" placeholder="Digite o valor do cateto 2">
+    <button onclick="enviarParaServidor()">Enviar</button>
+    <br>
+    <br>
+    <h3> Resposta do servidor</h3>
+    <span id="respostaDoServidor">.....</span>    
+
+    <script>
+        async function enviarParaServidor() {            
+            const enderecoServidor = document.getElementById('enderecoServidorInput').value;
+            const portaServidor = document.getElementById('inputPorta').value;
+            
+            // Criando um pacote de dados com os valores numéricos dos catetos
+            const meuPacoteDeDados = {               
+                x: parseFloat(document.getElementById('inputCateto1').value),
+                y: parseFloat(document.getElementById('inputCateto2').value)
+            };
+
+            // Enviando o pacote de dados para o servidor usando fetch com método POST
+            try {
+                const response = await fetch(`http://${enderecoServidor}:${portaServidor}/calcular-hipotenusa`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(meuPacoteDeDados),
+                });
+
+                // Aguarda a RESPOSTA em formato JSON
+                const { hipotenusa } = await response.json();
+                //neste caso retorna a hipotenusa calculada pelo servidor, que é extraída do objeto JSON usando destructuring. O valor da hipotenusa é então exibido na página HTML, atualizando o conteúdo do elemento com id "respostaDoServidor" para mostrar o resultado ao usuário.
+                
+                document.getElementById("respostaDoServidor").innerHTML = " A hipotenusa é: " + hipotenusa;
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro na comunicação com o servidor');
+            }
+        }
+    </script>
+</body>
+
+</html>
