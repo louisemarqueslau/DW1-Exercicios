@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clínica Vacinação</title>
+    <link rel="stylesheet" href="clinica.css">
+    
+</head>
+
+<body>
+    <h1>🏪 Clínica Vacinação Infantil</h1>
+    
+    <div class="container">
+        <h3>Consulte as vacinas das suas crianças</h3>
+        <p>Solicite uma consulta:</p>
+        
+        <button onclick="consultar('vacinas')">
+    Vacinas
+</button>
+
+<button onclick="consultar('agendadas')">
+    Agendadas
+</button>
+
+<button onclick="consultar('atrasadas')">
+    Atrasadas
+</button>
+
+<button onclick="consultar('proxima')">
+    Próxima Vacina
+</button>
+        
+        <div class="exemplos">
+            <p><strong>💡 Escolha o que deseja consultar:</strong></p>
+            <p>• Clique <span class="codigo">Vacinas</span> → Consulta as vacinas tomadas</p>
+            <p>• Clique <span class="codigo">Agendadas</span> → Responde os próximos agendamentos</p>
+            <p>• Clique <span class="codigo">Atrasadas</span> → Ela consulta o sistema e indica as vacinas pendentes</p>
+            <p>• Clique <span class="codigo">Próxima</span> → Responde com a próxima vacina a ser tomada</p>
+        </div>
+        
+        <div id="resultadoMensagem" class="resultado">💭 Aguardando sua mensagem...</div>
+    </div>
+
+    <script>
+        // Configuração do servidor (fácil de entender para iniciantes)
+        const enderecoServidor = 'localhost';
+        const porta = '3001';
+
+        // Função para enviar mensagem via POST
+        async function consultar(comando) {
+
+    const consultaJSON = {
+        mensagem: comando
+    };
+
+    try {
+
+        const resposta = await fetch(
+            `http://${enderecoServidor}:${porta}/api/mensagens`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(consultaJSON)
+            }
+        );
+
+        const dados = await resposta.json();
+
+        if (dados.status === "sucesso") {
+
+            const mensagemFormatada =
+                dados.mensagem.replace(/\n/g, '<br>');
+
+            document.getElementById('resultadoMensagem').innerHTML = `
+                <div class="sucesso">
+                    ${mensagemFormatada}
+                </div>
+            `;
+
+        } else {
+
+            document.getElementById('resultadoMensagem').innerHTML = `
+                <div class="erro">
+                    ${dados.mensagem}
+                </div>
+            `;
+        }
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        document.getElementById('resultadoMensagem').innerHTML = `
+            <div class="erro">
+                Erro ao conectar com o servidor.
+            </div>
+        `;
+    }
+}
+        // Permitir enviar pressionando Enter
+        document.getElementById('inputMensagem').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                enviarMensagem();
+            }
+        });
+    </script>
+</body>
+
+</html>
