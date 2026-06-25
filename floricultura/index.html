@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Floricultura</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<header>
+    <h1>🌷 Floricultura 🌷</h1>
+    <p>Flores que tornam momentos especiais</p>
+</header>
+
+
+<section class="catalogo">
+
+
+    <div class="flor">
+        <img src="https://loja.mionflores.com.br/wp-content/uploads/2024/04/BUQUE-COM-12-ROSAS-NA-EMBALAGEM-DE-CORACAO-R16000-800x800.webp">
+
+        <h2>Buquê de Rosas</h2>
+
+        <p>Rosas vermelhas com embalagem especial.</p>
+
+        <p class="preco">R$ 80,00</p>
+
+        <button onclick="adicionarCarrinho('Buquê de Rosas', 80)">
+            Adicionar ao pedido
+        </button>
+    </div>
+
+
+
+    <div class="flor">
+        <img src="https://i0.wp.com/campodasorquideas.com.br/wp-content/uploads/2024/01/phalaenopsis-pintadinho-03.jpg">
+
+        <h2>Orquídea</h2>
+
+        <p>Orquídea elegante para decoração.</p>
+
+        <p class="preco">R$ 65,00</p>
+
+        <button onclick="adicionarCarrinho('Orquídea', 65)">
+Adicionar ao pedido
+</button>
+    </div>
+
+
+
+
+    <div class="flor">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfe8c37cv1pUlyHsA1wuzIIJgDCjVd9ZkQIf4wo2JWUaI78_7Sl0NOj24&s=10">
+
+        <h2>Girassol</h2>
+
+        <p>Flor alegre e cheia de vida.</p>
+
+        <p class="preco">R$ 25,00</p>
+
+        <button onclick="adicionarCarrinho('Girassol', 25)">
+Adicionar ao pedido
+</button>
+    </div>
+
+
+
+
+    <div class="flor">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGESyn1OKcTpH3vqtYXUdY0332gC8-ug-Iu-wWwUfPvUXRmLdSuwMTs_RV&s=10">
+
+        <h2>Lírios</h2>
+
+        <p>Lírios brancos delicados.</p>
+
+        <p class="preco">R$ 45,00</p>
+
+       <button onclick="adicionarCarrinho('Lírios', 45)">
+Adicionar ao pedido
+</button>
+
+    </div>
+
+
+
+
+    <div class="flor">
+
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_plgn-enIf1kGTv-O_ZRnXGd0Oy7CB9vbIPtF9YgQRw&s=10">
+
+        <h2>Tulipas</h2>
+
+        <p>Tulipas coloridas e sofisticadas.</p>
+
+        <p class="preco">R$ 90,00</p>
+
+        <button onclick="adicionarCarrinho('Tulipas', 90)">
+Adicionar ao pedido
+</button>
+
+    </div>
+
+
+
+
+    <div class="flor">
+
+        <img src="https://jardimpark.com.br/wp-content/uploads/2018/10/suculentas.jpg">
+
+        <h2>Suculentas</h2>
+
+        <p>Plantas pequenas para decoração.</p>
+
+        <p class="preco">R$ 35,00</p>
+
+        <button onclick="adicionarCarrinho('Suculentas', 35)">
+Adicionar ao pedido
+</button>
+
+    </div>
+
+    <section class="carrinho">
+
+    <h2>🛒 Seu pedido</h2>
+
+    <ul id="listaCarrinho"></ul>
+
+    <h3>Total: R$ <span id="total">0</span></h3>
+
+    <button onclick="finalizarPedido()">
+        Finalizar pedido 🌷
+    </button>
+
+</section>
+
+
+
+
+<script src="script.js"></script>
+</section>
+
+
+</body>
+
+</html>

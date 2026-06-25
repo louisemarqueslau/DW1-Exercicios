@@ -1,0 +1,35 @@
+.formulario {
+
+    background-color: white;
+
+    width: 80%;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0px 3px 10px #ccc;
+
+}
+
+
+.formulario input {
+
+    display: block;
+
+    width: 90%;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+}
+
+
+.formulario label {
+
+    font-weight: bold;
+
+}

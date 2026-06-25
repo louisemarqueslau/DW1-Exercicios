@@ -1,0 +1,193 @@
+body {
+
+    font-family: Arial, sans-serif;
+
+    background-color: #fff5fa;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+header {
+
+    background-color: #ffa0d4;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+}
+
+
+
+header h1 {
+
+    margin: 0;
+
+}
+
+
+
+.catalogo {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    padding: 30px;
+
+}
+
+
+
+.flor {
+
+    background-color: white;
+
+    width: 250px;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    box-shadow: 0px 3px 10px #ccc;
+
+}
+
+
+
+.flor img {
+
+    width: 180px;
+
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+}
+
+
+
+.flor h2 {
+
+    color: #b84d8b;
+
+}
+
+
+
+.preco {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #8f356d;
+
+}
+
+
+
+button {
+
+    background-color: #d88bb5;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+}
+
+
+
+button:hover {
+
+    background-color: #b84d8b;
+
+}
+
+.carrinho {
+
+    background-color: white;
+
+    width: 80%;
+
+    margin: 30px auto;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    box-shadow: 0px 3px 10px #ccc;
+
+}
+
+
+.carrinho h2 {
+
+    color: #b84d8b;
+
+}
+
+
+.carrinho li {
+
+    margin: 10px;
+
+}
+
+.formulario {
+
+    background-color: white;
+
+    width: 80%;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0px 3px 10px #ccc;
+
+}
+
+
+.formulario input {
+
+    display: block;
+
+    width: 90%;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+}
+
+
+.formulario label {
+
+    font-weight: bold;
+
+}
